@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const config = require('../config/config');
+const config = require('../config');
 const bluebird = require('bluebird');
 const DbClient = require('../lib/dbClient');
 const DbModels = require('../models');
@@ -12,7 +12,7 @@ const dbModels = new DbModels(DbClient);
 const redisConn = dbModels.redisConn;
 const mysqlConn = dbModels.mysqlConn;
 const log = new Log(config.log);
-const mqClient = new MQClient(config.mqClient, log);
+const mqClient = new MQClient(config.mqClient_nct, log);
 const processFlow = new ProcessFlow(mysqlConn, redisConn, log);
 
 function ErrorHandler(error) {
@@ -32,7 +32,7 @@ mqClient.connect()
     mqClient.message((message) => {
       const messageTopic = message.topic;
 
-      if (messageTopic === config.mqClient.topics.subFromServer) {
+      if (messageTopic === config.mqClient_nct.topics.subFromServer) {
         log.debug({
           label: `Msg from ${messageTopic}`,
           message: message,
@@ -52,7 +52,7 @@ mqClient.connect()
       return bluebird.reject(new Error(`Error topic "${message.topic}", Message "${message}"`));
     });
 
-    log.debug('Listening on Kafka topic : ' + config.mqClient.consumerGroup.topics);
+    log.debug('Listening on Kafka topic : ' + config.mqClient_nct.consumerGroup.topics);
     return bluebird.resolve();
   })
   .catch(error => {
