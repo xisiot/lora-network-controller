@@ -2,7 +2,7 @@
 
 const config = require('../config');
 const bluebird = require('bluebird');
-const DbClient = require('../lib/dbClient');
+const DbClient = require('../lib/lora-lib/dbClient');
 const DbModels = require('../models');
 const loraLib = require('../lib/lora-lib');
 const { ERROR, Log, MQClient } = loraLib;
