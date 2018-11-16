@@ -3,5 +3,5 @@
 docs/api
 node_modules
 coverage
-config/config.js
+config/config.json
 package-lock.json
