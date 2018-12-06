@@ -194,7 +194,7 @@ const MaxEIRP = 0x7;
 const MaxDwellTime = 0x27;
 const result_output_TxParamSetupReq = {
   '09': {
-    EIRP_DwellTime: utils.numToHexBuf(MaxDwellTime, 1),
+    DwellTime: utils.numToHexBuf(MaxDwellTime, 1),
   }
 }
 describe('Test TxParamSetupReq', () => {
