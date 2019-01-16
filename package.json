@@ -25,16 +25,17 @@
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
+    "ajv": "^6.5.4",
     "bluebird": "^3.5.1",
     "ioredis": "^2.5.0",
     "kafka-node": "^2.3.0",
     "lodash": "^4.17.4",
+    "moment": "^2.22.2",
     "mysql2": "^1.5.1",
     "sequelize": "^4.22.6",
     "winston": "^3.0.0-rc5"
   },
   "pre-commit": [
-    "test",
-    "lint"
+    "test"
   ]
 }
